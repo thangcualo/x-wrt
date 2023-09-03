@@ -16,8 +16,8 @@
 		led-failsafe = &led_sys;
 		led-running = &led_sys;
 		led-upgrade = &led_sys;
-		label-mac-device = &gmac0;
-	};
+label-mac-device = &gmac0;
+		};
 
 	soc {
 		rng@22000 {
@@ -85,11 +85,11 @@
 
 	leds {
 		compatible = "gpio-leds";
-
+		
 		led_sys: led-0 {
 			label = "blue:sys";
 			gpios = <&tlmm 39 GPIO_ACTIVE_HIGH>;
-			color = <LED_COLOR_ID_BLUE>;
+color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_POWER;
 		};
 
@@ -97,7 +97,7 @@
 			label = "blue:wlan2g";
 			gpios = <&tlmm 32 GPIO_ACTIVE_HIGH>;
 			linux,default-trigger = "phy0tpt";
-			color = <LED_COLOR_ID_BLUE>;
+color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_WLAN;
 			function-enumerator = <0>;
 		};
@@ -106,7 +106,7 @@
 			label = "blue:wlan5g";
 			gpios = <&tlmm 50 GPIO_ACTIVE_HIGH>;
 			linux,default-trigger = "phy1tpt";
-			color = <LED_COLOR_ID_BLUE>;
+color = <LED_COLOR_ID_BLUE>;
 			function = LED_FUNCTION_WLAN;
 			function-enumerator = <1>;
 		};
@@ -196,10 +196,10 @@
 
 				precal_art_5000: precal@5000 {
 					reg = <0x5000 0x2f20>;
-				};
-			};
 		};
 	};
+};
+};
 };
 
 &nand {
@@ -231,9 +231,9 @@
 
 &pcie0 {
 	status = "okay";
-	pinctrl-names = "default";
 	pinctrl-0 = <&pcie_pins>;
-	perst-gpio = <&tlmm 4 GPIO_ACTIVE_LOW>;
+	pinctrl-names = "default";
+	perst-gpio = <&tlmm 4 GPIO_ACTIVE_HIGH>;
 	wake-gpio = <&tlmm 40 GPIO_ACTIVE_HIGH>;
 
 	/* Free slot for use */
@@ -261,8 +261,8 @@
 		mux {
 			pins = "gpio2";
 			function = "gpio";
-			output-low;
 			bias-pull-down;
+			output-low;
 		};
 	};
 
@@ -351,14 +351,14 @@
 
 &wifi0 {
 	status = "okay";
-	nvmem-cell-names = "pre-calibration";
+nvmem-cell-names = "pre-calibration";
 	nvmem-cells = <&precal_art_1000>;
 	qcom,ath10k-calibration-variant = "P&W R619AC";
 };
 
 &wifi1 {
 	status = "okay";
-	nvmem-cell-names = "pre-calibration";
+nvmem-cell-names = "pre-calibration";
 	nvmem-cells = <&precal_art_5000>;
 	qcom,ath10k-calibration-variant = "P&W R619AC";
 };
